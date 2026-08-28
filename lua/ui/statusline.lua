@@ -1,13 +1,13 @@
 local M = {}
 
---- Find the project root for the current buffer (git root or cwd).
----@param buf? number
----@return string
-function M.get_root(buf)
-  buf = buf or 0
+local function get_cwd()
+  return vim.fs.normalize(vim.uv.cwd() or ".")
+end
+
+local function get_root(buf)
   local markers = { ".git", ".hg", ".svn", "lua", "package.json", "Cargo.toml", "pyproject.toml" }
-  local root = vim.fs.root(buf, markers)
-  return root and vim.fs.normalize(root) or vim.fs.normalize(vim.uv.cwd() or ".")
+  local root = vim.fs.root(buf or 0, markers)
+  return root and vim.fs.normalize(root) or get_cwd()
 end
 
 --- Generates a lualine component showing project root name with icon.
@@ -18,8 +18,8 @@ function M.root_dir(opts)
   local icon = opts.icon or "󱉭 "
 
   local function get()
-    local cwd = vim.fs.normalize(vim.uv.cwd() or ".")
-    local root = M.get_root()
+    local cwd = get_cwd()
+    local root = get_root()
     if root == cwd then
       return nil
     end
@@ -60,8 +60,8 @@ function M.pretty_path(user_opts)
     end
 
     path = vim.fs.normalize(path)
-    local root = M.get_root()
-    local cwd = vim.fs.normalize(vim.uv.cwd() or ".")
+    local root = get_root()
+    local cwd = get_cwd()
     if path:find(cwd, 1, true) == 1 then
       path = path:sub(#cwd + 2)
     elseif path:find(root, 1, true) == 1 then
