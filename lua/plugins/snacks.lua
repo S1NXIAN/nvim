@@ -21,10 +21,8 @@ return {
     },
     terminal = {
       win = {
-        position = "float",
-        border = "rounded",
-        width = 0.8,
-        height = 0.8,
+        position = "bottom",
+        height = 0.4,
       },
     },
     gitbrowse = { enabled = true },
@@ -103,7 +101,21 @@ return {
     { "<leader>n", function() Snacks.notifier.show_history() end, desc = "Notification History" },
     { "<leader>bd", function() Snacks.bufdelete() end, desc = "Delete Buffer" },
     { "<leader>cR", function() Snacks.rename.rename_file() end, desc = "Rename File" },
-    { "<leader>ft", function() Snacks.terminal() end, desc = "Toggle Terminal" },
+    { "<leader>ft", function() Snacks.terminal() end, desc = "Toggle Terminal (Bottom)" },
+    {
+      "<leader>wt",
+      function()
+        Snacks.terminal(nil, {
+          win = {
+            position = "float",
+            border = "rounded",
+            width = 0.8,
+            height = 0.8,
+          },
+        })
+      end,
+      desc = "Toggle Floating Terminal",
+    },
     { "<leader>un", function() Snacks.notifier.hide() end, desc = "Dismiss All Notifications" },
     { "]]", function() Snacks.words.jump(vim.v.count1) end, desc = "Next Reference", mode = { "n", "t" } },
     { "[[", function() Snacks.words.jump(-vim.v.count1) end, desc = "Prev Reference", mode = { "n", "t" } },
