@@ -114,6 +114,20 @@ return {
     },
   },
   init = function()
+    -- Tighten spacing between git sign and line numbers
+    local sc = require("snacks.statuscolumn")
+    local orig_get = sc._get
+    sc.icon = function(sign)
+      if not sign then
+        return " "
+      end
+      local text = vim.trim(sign.text or "")
+      return sign.texthl and ("%#" .. sign.texthl .. "#" .. text .. "%*") or text
+    end
+    sc._get = function()
+      return orig_get():gsub("(@)(  )(%%=)", "%1 %3")
+    end
+
     vim.api.nvim_create_autocmd("User", {
       pattern = "VeryLazy",
       callback = function()
