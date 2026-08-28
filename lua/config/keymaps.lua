@@ -4,6 +4,7 @@ local opts = { noremap = true, silent = true }
 -- better escape from terminal / insert
 map("i", "jk", "<Esc>", { desc = "Escape insert" })
 map("t", "jk", "<C-\\><C-n>", { desc = "Terminal normal mode" })
+map("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Terminal normal mode" })
 
 -- window navigation (normal and terminal mode)
 map("n", "<C-h>", "<C-w>h", { desc = "Left window" })
