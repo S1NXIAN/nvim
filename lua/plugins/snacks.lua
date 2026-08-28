@@ -19,7 +19,14 @@ return {
       left = { "mark", "git" },  -- git signs on the left
       right = { "fold", "sign" }, -- diagnostics / folds on the right
     },
-    terminal = { enabled = true },
+    terminal = {
+      win = {
+        position = "float",
+        border = "rounded",
+        width = 0.8,
+        height = 0.8,
+      },
+    },
     gitbrowse = { enabled = true },
     lazygit = { enabled = true },
     gh = { enabled = true },
