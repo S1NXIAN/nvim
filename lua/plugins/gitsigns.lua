@@ -20,8 +20,8 @@ return {
         changedelete = { text = "~" },
         untracked = { text = "┆" },
       },
-      signcolumn = false, -- hide signs in separate gutter
-      numhl = true,       -- highlight line numbers according to git status
+      signcolumn = true, -- output signs for snacks statuscolumn
+      numhl = false,     -- leave line number highlighting for diagnostics
       linehl = false,
       word_diff = false,
       watch_gitdir = { follow_files = true },

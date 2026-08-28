@@ -14,7 +14,11 @@ return {
     quickfile = { enabled = true },
     scope = { enabled = true },
     scroll = { enabled = true },
-    statuscolumn = { enabled = true },
+    statuscolumn = {
+      enabled = true,
+      left = { "mark", "git" },  -- git signs on the left
+      right = { "fold", "sign" }, -- diagnostics / folds on the right
+    },
     terminal = { enabled = true },
     gitbrowse = { enabled = true },
     lazygit = { enabled = true },
