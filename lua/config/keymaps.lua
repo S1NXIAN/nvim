@@ -5,12 +5,15 @@ local opts = { noremap = true, silent = true }
 map("i", "jk", "<Esc>", { desc = "Escape insert" })
 map("t", "jk", "<C-\\><C-n>", { desc = "Terminal normal mode" })
 
--- window navigation
+-- window navigation (normal and terminal mode)
 map("n", "<C-h>", "<C-w>h", { desc = "Left window" })
 map("n", "<C-j>", "<C-w>j", { desc = "Down window" })
 map("n", "<C-k>", "<C-w>k", { desc = "Up window" })
 map("n", "<C-l>", "<C-w>l", { desc = "Right window" })
-
+map("t", "<C-h>", "<cmd>wincmd h<CR>", { desc = "Left window" })
+map("t", "<C-j>", "<cmd>wincmd j<CR>", { desc = "Down window" })
+map("t", "<C-k>", "<cmd>wincmd k<CR>", { desc = "Up window" })
+map("t", "<C-l>", "<cmd>wincmd l<CR>", { desc = "Right window" })
 -- resize
 map("n", "<C-Up>", ":resize +2<CR>", { desc = "Resize up" })
 map("n", "<C-Down>", ":resize -2<CR>", { desc = "Resize down" })
