@@ -106,6 +106,7 @@ return {
       "<leader>wt",
       function()
         Snacks.terminal(nil, {
+          count = 99,
           win = {
             position = "float",
             border = "rounded",
