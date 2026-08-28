@@ -1,3 +1,35 @@
--- Keymaps are automatically loaded on the VeryLazy event
--- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
--- Add any additional keymaps here
+local map = vim.keymap.set
+local opts = { noremap = true, silent = true }
+
+-- better escape from terminal / insert
+map("i", "jk", "<Esc>", { desc = "Escape insert" })
+map("t", "jk", "<C-\\><C-n>", { desc = "Terminal normal mode" })
+
+-- window navigation
+map("n", "<C-h>", "<C-w>h", { desc = "Left window" })
+map("n", "<C-j>", "<C-w>j", { desc = "Down window" })
+map("n", "<C-k>", "<C-w>k", { desc = "Up window" })
+map("n", "<C-l>", "<C-w>l", { desc = "Right window" })
+
+-- resize
+map("n", "<C-Up>", ":resize +2<CR>", { desc = "Resize up" })
+map("n", "<C-Down>", ":resize -2<CR>", { desc = "Resize down" })
+
+-- buffers
+map("n", "<S-l>", ":bnext<CR>", { desc = "Next buffer" })
+map("n", "<S-h>", ":bprevious<CR>", { desc = "Prev buffer" })
+
+-- clear search
+map("n", "<Esc>", ":noh<CR>", { desc = "Clear search highlight" })
+
+-- file ops
+map("n", "<leader>w", ":w<CR>", { desc = "Save" })
+map("n", "<leader>q", ":q<CR>", { desc = "Quit" })
+
+-- LSP (global); gd/gr owned by snacks picker in plugins/snacks.lua
+map("n", "K", vim.lsp.buf.hover, { desc = "Hover" })
+map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, { desc = "Code action" })
+
+-- diagnostics
+map("n", "[d", vim.diagnostic.goto_prev, { desc = "Prev diagnostic" })
+map("n", "]d", vim.diagnostic.goto_next, { desc = "Next diagnostic" })
