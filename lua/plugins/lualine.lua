@@ -110,7 +110,7 @@ return {
     require("lualine").setup({
       options = {
         theme = "auto",
-        globalstatus = vim.o.laststatus == 3,
+        globalstatus = true,
         disabled_filetypes = { statusline = { "dashboard", "alpha", "ministarter", "snacks_dashboard" } },
         component_separators = { left = "", right = "" },
         section_separators = { left = "", right = "" },

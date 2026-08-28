@@ -23,6 +23,9 @@ return {
       win = {
         position = "bottom",
         height = 0.4,
+        wo = {
+          winbar = "",
+        },
       },
     },
     gitbrowse = { enabled = true },

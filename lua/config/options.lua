@@ -27,6 +27,7 @@ vim.opt.sidescrolloff = 10
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.clipboard = "unnamedplus"
+vim.opt.laststatus = 3
 
 -- persistence / perf
 vim.opt.undofile = true
