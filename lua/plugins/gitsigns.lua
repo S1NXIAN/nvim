@@ -20,8 +20,8 @@ return {
         changedelete = { text = "~" },
         untracked = { text = "┆" },
       },
-      signcolumn = true, -- separate gutter (default)
-      numhl = false,
+      signcolumn = false, -- hide signs in separate gutter
+      numhl = true,       -- highlight line numbers according to git status
       linehl = false,
       word_diff = false,
       watch_gitdir = { follow_files = true },
@@ -113,8 +113,10 @@ return {
     -- link them so staged signs match the theme instead of gitsigns defaults.
     vim.api.nvim_create_autocmd("ColorScheme", {
       callback = function()
-        for _, name in ipairs({ "Add", "Change", "Delete" }) do
+        for _, name in ipairs({ "Add", "Change", "Delete", "Changedelete", "Topdelete", "Untracked" }) do
+          vim.cmd("hi! link GitSigns" .. name .. "Nr GitSigns" .. name)
           vim.cmd("hi! link GitSigns" .. name .. "Staged GitSigns" .. name)
+          vim.cmd("hi! link GitSigns" .. name .. "StagedNr GitSigns" .. name)
         end
       end,
     })
