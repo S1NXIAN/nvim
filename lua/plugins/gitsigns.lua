@@ -107,18 +107,4 @@ return {
       end,
     }
   end,
-  config = function(_, opts)
-    require("gitsigns").setup(opts)
-    -- cendre defines GitSignsAdd/Change/Delete but not the *Staged variants;
-    -- link them so staged signs match the theme instead of gitsigns defaults.
-    vim.api.nvim_create_autocmd("ColorScheme", {
-      callback = function()
-        for _, name in ipairs({ "Add", "Change", "Delete", "Changedelete", "Topdelete", "Untracked" }) do
-          vim.cmd("hi! link GitSigns" .. name .. "Nr GitSigns" .. name)
-          vim.cmd("hi! link GitSigns" .. name .. "Staged GitSigns" .. name)
-          vim.cmd("hi! link GitSigns" .. name .. "StagedNr GitSigns" .. name)
-        end
-      end,
-    })
-  end,
 }
