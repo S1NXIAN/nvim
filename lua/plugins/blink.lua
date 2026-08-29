@@ -35,6 +35,19 @@ return {
         winhighlight = "Normal:Normal,FloatBorder:FloatBorder",
       },
     },
+    cmdline = {
+      enabled = true,
+      sources = function()
+        local type = vim.fn.getcmdtype()
+        if type == "/" or type == "?" then
+          return { "buffer" }
+        end
+        if type == ":" or type == "@" then
+          return { "cmdline", "path" }
+        end
+        return {}
+      end,
+    },
     sources = { default = { "lsp", "path", "snippets", "buffer" } },
     fuzzy = { implementation = "prefer_rust_with_warning" },
   },
