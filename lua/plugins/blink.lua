@@ -37,6 +37,11 @@ return {
     },
     cmdline = {
       enabled = true,
+      completion = {
+        menu = {
+          auto_show = true,
+        },
+      },
       sources = function()
         local type = vim.fn.getcmdtype()
         if type == "/" or type == "?" then
