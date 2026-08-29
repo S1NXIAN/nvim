@@ -19,6 +19,14 @@ function M.apply_highlights()
   vim.api.nvim_set_hl(0, "BlinkCmpDocBorder", { fg = border_fg, bg = "NONE" })
   vim.api.nvim_set_hl(0, "BlinkCmpSignatureHelpBorder", { fg = border_fg, bg = "NONE" })
 
+  -- Noice popups and command palette borders
+  vim.api.nvim_set_hl(0, "NoiceCmdlinePopup", { fg = norm_fg, bg = "NONE" })
+  vim.api.nvim_set_hl(0, "NoiceCmdlinePopupBorder", { fg = border_fg, bg = "NONE" })
+  vim.api.nvim_set_hl(0, "NoiceConfirm", { fg = norm_fg, bg = "NONE" })
+  vim.api.nvim_set_hl(0, "NoiceConfirmBorder", { fg = border_fg, bg = "NONE" })
+  vim.api.nvim_set_hl(0, "NoicePopup", { fg = norm_fg, bg = "NONE" })
+  vim.api.nvim_set_hl(0, "NoicePopupBorder", { fg = border_fg, bg = "NONE" })
+
   -- GitSigns staged & number highlight links
   for _, name in ipairs({ "Add", "Change", "Delete", "Changedelete", "Topdelete", "Untracked" }) do
     vim.api.nvim_set_hl(0, "GitSigns" .. name .. "Nr", { link = "GitSigns" .. name, default = true })

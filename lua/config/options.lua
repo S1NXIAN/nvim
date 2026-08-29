@@ -28,6 +28,7 @@ vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.clipboard = "unnamedplus"
 vim.opt.laststatus = 3
+vim.opt.confirm = true              -- confirm to save changes before exiting modified buffer
 
 -- persistence / perf
 vim.opt.undofile = true
