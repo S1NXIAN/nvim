@@ -1,14 +1,14 @@
 return {
-  "danilamihailov/beacon.nvim",
+  "sphamba/smear-cursor.nvim",
   event = "VeryLazy",
   opts = {
-    enabled = true,
-    speed = 2,
-    width = 30,
-    winblend = 70,
-    fps = 60,
-    min_jump = 8, -- Trigger beacon pulse on jumps >= 8 lines
-    cursor_events = { "CursorMoved" },
-    window_events = { "WinEnter", "FocusGained" },
+    stiffness = 0.8,
+    trailing_stiffness = 0.6,
+    stiffness_insert_mode = 0.7,
+    trailing_stiffness_insert_mode = 0.7,
+    damping = 0.95,
+    damping_insert_mode = 0.95,
+    distance_stop_animating = 0.5,
+    transparent_bg_fallback_color = "#171311",
   },
 }
