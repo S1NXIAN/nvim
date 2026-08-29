@@ -29,6 +29,9 @@ local M = {}
 ---@field formatters? string[] | table List of conform formatter names or table with stop_after_first = true
 
 --- Language and filetype tool definitions.
+local prettier = { "prettierd", "prettier", stop_after_first = true }
+
+--- Language and filetype tool definitions.
 ---@type table<string, LanguageSpec>
 M.languages = {
   lua = {
@@ -38,27 +41,13 @@ M.languages = {
     lsp = "pyright",
     formatters = { "ruff_format", "ruff_fix" },
   },
-  javascript = {
-    formatters = { "prettierd", "prettier", stop_after_first = true },
-  },
-  typescript = {
-    formatters = { "prettierd", "prettier", stop_after_first = true },
-  },
-  javascriptreact = {
-    formatters = { "prettierd", "prettier", stop_after_first = true },
-  },
-  typescriptreact = {
-    formatters = { "prettierd", "prettier", stop_after_first = true },
-  },
-  json = {
-    formatters = { "prettierd", "prettier", stop_after_first = true },
-  },
-  yaml = {
-    formatters = { "prettierd", "prettier", stop_after_first = true },
-  },
-  markdown = {
-    formatters = { "prettierd", "prettier", stop_after_first = true },
-  },
+  javascript = { formatters = prettier },
+  typescript = { formatters = prettier },
+  javascriptreact = { formatters = prettier },
+  typescriptreact = { formatters = prettier },
+  json = { formatters = prettier },
+  yaml = { formatters = prettier },
+  markdown = { formatters = prettier },
   sh = {
     formatters = { "shfmt" },
   },
