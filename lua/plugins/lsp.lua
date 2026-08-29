@@ -8,7 +8,8 @@ return {
     "saghen/blink.cmp",
   },
   config = function()
-    local servers = { "pyright" }
+    local languages = require("config.languages")
+    local servers = languages.get_lsp_servers()
     local capabilities = require("blink.cmp").get_lsp_capabilities()
 
     require("mason").setup()
