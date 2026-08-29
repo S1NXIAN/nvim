@@ -34,58 +34,58 @@ local prettier = { "prettierd", "prettier", stop_after_first = true }
 --- Language and filetype tool definitions.
 ---@type table<string, LanguageSpec>
 M.languages = {
-  lua = {
-    formatters = { "stylua" },
-  },
-  python = {
-    lsp = "pyright",
-    formatters = { "ruff_format", "ruff_fix" },
-  },
-  javascript = { formatters = prettier },
-  typescript = { formatters = prettier },
-  javascriptreact = { formatters = prettier },
-  typescriptreact = { formatters = prettier },
-  json = { formatters = prettier },
-  yaml = { formatters = prettier },
-  markdown = { formatters = prettier },
-  sh = {
-    formatters = { "shfmt" },
-  },
+	lua = {
+		formatters = { "stylua" },
+	},
+	python = {
+		lsp = "pyright",
+		formatters = { "ruff_format", "ruff_fix" },
+	},
+	javascript = { formatters = prettier },
+	typescript = { formatters = prettier },
+	javascriptreact = { formatters = prettier },
+	typescriptreact = { formatters = prettier },
+	json = { formatters = prettier },
+	yaml = { formatters = prettier },
+	markdown = { formatters = prettier },
+	sh = {
+		formatters = { "shfmt" },
+	},
 }
 
 --- Extracts a deduplicated list of all configured LSP servers for Mason and lspconfig.
 ---@return string[]
 function M.get_lsp_servers()
-  local servers = {}
-  local seen = {}
+	local servers = {}
+	local seen = {}
 
-  for _, spec in pairs(M.languages) do
-    if spec.lsp then
-      local list = type(spec.lsp) == "table" and spec.lsp or { spec.lsp }
-      for _, server in ipairs(list) do
-        if not seen[server] then
-          seen[server] = true
-          servers[#servers + 1] = server
-        end
-      end
-    end
-  end
+	for _, spec in pairs(M.languages) do
+		if spec.lsp then
+			local list = type(spec.lsp) == "table" and spec.lsp or { spec.lsp }
+			for _, server in ipairs(list) do
+				if not seen[server] then
+					seen[server] = true
+					servers[#servers + 1] = server
+				end
+			end
+		end
+	end
 
-  return servers
+	return servers
 end
 
 --- Extracts the filetype-to-formatter mapping for conform.nvim.
 ---@return table<string, any>
 function M.get_formatters_by_ft()
-  local formatters = {}
+	local formatters = {}
 
-  for ft, spec in pairs(M.languages) do
-    if spec.formatters then
-      formatters[ft] = spec.formatters
-    end
-  end
+	for ft, spec in pairs(M.languages) do
+		if spec.formatters then
+			formatters[ft] = spec.formatters
+		end
+	end
 
-  return formatters
+	return formatters
 end
 
 return M
