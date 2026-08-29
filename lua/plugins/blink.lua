@@ -9,6 +9,8 @@ return {
     completion = {
       menu = {
         border = "rounded",
+        scrollbar = false,
+        winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:BlinkCmpMenuSelection,Search:None",
         draw = {
           columns = {
             { "label", "label_description", gap = 1 },
@@ -21,12 +23,16 @@ return {
         auto_show_delay_ms = 200,
         window = {
           border = "rounded",
+          scrollbar = false,
+          winhighlight = "Normal:Normal,FloatBorder:FloatBorder,EndOfBuffer:Normal",
         },
       },
     },
     signature = {
       window = {
         border = "rounded",
+        scrollbar = false,
+        winhighlight = "Normal:Normal,FloatBorder:FloatBorder",
       },
     },
     sources = { default = { "lsp", "path", "snippets", "buffer" } },
