@@ -19,6 +19,10 @@ map("t", "<C-l>", "<cmd>wincmd l<CR>", { desc = "Right window" })
 map("n", "<C-Up>", ":resize +2<CR>", { desc = "Resize up" })
 map("n", "<C-Down>", ":resize -2<CR>", { desc = "Resize down" })
 
+-- visual indent (stay in visual mode)
+map("v", "<", "<gv", { desc = "Indent left and keep selection" })
+map("v", ">", ">gv", { desc = "Indent right and keep selection" })
+
 -- buffers
 map("n", "<S-l>", ":bnext<CR>", { desc = "Next buffer" })
 map("n", "<S-h>", ":bprevious<CR>", { desc = "Prev buffer" })
