@@ -6,10 +6,23 @@ return {
   },
   opts = {
     lsp = {
+      progress = {
+        enabled = false, -- suppress repeated `✓ pyright` notifications while typing
+      },
       override = {
         ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
         ["vim.lsp.util.stylize_markdown"] = true,
         ["cmp.entry.get_documentation"] = true,
+      },
+    },
+    routes = {
+      {
+        filter = {
+          event = "msg_show",
+          kind = "",
+          find = "written",
+        },
+        opts = { skip = true },
       },
     },
     presets = {
